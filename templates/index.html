@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Form</title>
+    <!-- Sertakan SweetAlert CSS dan JavaScript -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        function calculateTotal() {
+            // Mendapatkan nilai dari setiap fitur
+            var feature1 = parseFloat(document.getElementById("feature1").value) || 0;
+            var feature2 = parseFloat(document.getElementById("feature2").value) || 0;
+            var feature3 = parseFloat(document.getElementById("feature3").value) || 0;
+            var feature4 = parseFloat(document.getElementById("feature4").value) || 0;
+            var feature5 = parseFloat(document.getElementById("feature5").value) || 0;
+            var feature6 = parseFloat(document.getElementById("feature6").value) || 0;
+    
+            // Menghitung total
+            var total = feature1 + feature2 + feature3 + feature4 + feature5 + feature6;
+    
+            // Menetapkan nilai total ke elemen input fitur7
+            document.getElementById("feature7").value = total;
+        }
+    </script>
+    
+    <style>
+        /* Letakkan CSS di sini */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Prediction Form</h1>
+    <form action="/predict" method="post" onsubmit="calculateTotal()">
+        <label for="desa">Asal Desa:</label>
+        <select id="desa" name="desa" required>
+            <option value="Cendoro">Cendoro</option>
+            <option value="Cepokorejo">Cepokorejo</option>
+            <option value="Gesikharjo">Gesikharjo</option>
+            <option value="Karangagung">Karangagung</option>
+            <option value="Leranwetan">Leranwetan</option>
+            <option value="Ngimbang">Ngimbang</option>
+            <option value="Palang">Palang</option>
+            <option value="Pliwetan">Pliwetan</option>
+            <option value="Pucangan">Pucangan</option>
+            <option value="Sumurgung">Sumurgung</option>
+            <option value="Tasikmadu">Tasikmadu</option>
+            <option value="Wangun">Wangun</option>
+        </select><br>
+        <label for="nama">Nama Peserta:</label>
+        <input type="text" id="nama" name="nama" required><br>
+        <label for="nomerUjian">Nomer Ujian Peserta:</label>
+        <input type="text" id="nomerUjian" name="nomerUjian" required><br>
+        <label for="jabatan">Jabatan Yang Dilamar:</label>
+        <select id="jabatan" name="jabatan" required>
+            <option value="Sekretaris Desa">Sekretaris Desa</option>
+            <option value="Kepala Dusun">Kepala Dusun</option>
+            <option value="Kaur Tata Usaha dan Umum">Kaur Tata Usaha dan Umum</option>
+            <option value="Kaur Keuangan">Kaur Keuangan</option>
+            <option value="Kaur Perencanaan">Kaur Perencanaan</option>
+            <option value="Kasi Pemerintahan">Kasi Pemerintahan</option>
+            <option value="Kasi Kesejahteraan">Kasi Kesejahteraan</option>
+            <option value="Kasi Pelayanan">Kasi Pelayanan</option>
+        </select><br>
+        <label for="feature1">Pengetahuan Pemerintahan:</label>
+        <input type="text" name="feature1" id="feature1" required><br>
+        <label for="feature2">Agama:</label>
+        <input type="text" name="feature2" id="feature2" required><br>
+        <label for="feature3">Pengetahuan Umum:</label>
+        <input type="text" name="feature3" id="feature3" required><br>
+        <label for="feature4">Bahasa Indonesia:</label>
+        <input type="text" name="feature4" id="feature4" required><br>
+        <label for="feature5">Pengetahuan Komputer:</label>
+        <input type="text" name="feature5" id="feature5" required><br>
+        <label for="feature6">Praktek Komputer:</label>
+        <input type="text" name="feature6" id="feature6" required><br>
+
+        <!-- Fitur 7 sebagai elemen input tersembunyi -->
+        <label for="feature6">Total Nilai:</label>
+        <input type="text" name="feature7" id="feature7" value="">
+
+        <button type="submit">Predict</button>
+    </form>
+</body>
+
+</html>
